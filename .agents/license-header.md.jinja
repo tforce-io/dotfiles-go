@@ -1,0 +1,32 @@
+# License Header
+
+## Guideline
+
+- Start every code file, including test files, with the license header below.
+- The header comes first, before the `package` clause, followed by a blank line.
+
+{%- if license_header == 'Full' %}
+
+## Full header
+
+The header for each code file is:
+
+```go
+{% include 'licenses/' ~ license|lower ~ '-notice.jinja' -%}
+```
+{%- elif license_header == 'SPDX' %}
+
+## SPDX identifier
+
+The header for each code file is:
+
+```go
+{% include 'licenses/spdx-notice.jinja' -%}
+```
+{%- endif %}
+
+<!-- Project-specific / Guideline -->
+
+## Project-specific
+
+<!-- Project-specific -->
