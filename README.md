@@ -83,3 +83,7 @@ License file mapping:
 - Keep marker text byte-identical across versions - Copier matches on this line as diff context, so even a whitespace or punctuation change can break the anchor and produce spurious conflicts.
 - Tag every release that changes template-owned files, with an annotated, PEP 440-compliant tag (`git tag -a vX.Y.Z -m "..."` then `git push --tags`).
 - Never move or re-point a published tag (no force-push to tags); ship corrections as a new tag instead.
+
+## Attributions
+
+- Portion of [task-guideline.md](.agents/task-guideline.md) adapted from [lazy senior dev mode](https://github.com/DietrichGebert/ponytail/blob/main/AGENTS.md) of [Ponytail](https://github.com/DietrichGebert/ponytail) by Dietrich Gebert, licensed under MIT license.
