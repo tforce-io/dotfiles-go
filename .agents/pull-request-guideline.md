@@ -12,6 +12,7 @@ Before opening or updating a pull request, verify:
 - [ ] PR description explains the motivation and summarizes the change.
 - [ ] PR is scoped to a single logical change - split unrelated changes into separate PRs.
 - [ ] Breaking changes are called out explicitly in the PR description.
+- [ ] Code duplication is justified (the same logic should not be duplicated, as it hurts maintainability).
 - [ ] Any new dependency is justified (avoid adding dependencies for trivial functionality).
 - [ ] CI (if configured) passes on the PR branch.
 - [ ] Linked issues/tickets are referenced, if applicable.
