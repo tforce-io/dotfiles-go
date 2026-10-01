@@ -45,7 +45,6 @@ To customize the dotfiles to follow your project, add your rules below the `<!--
 ## Template Layout
 
 ```
-.
 ├── .agents/                   # shared AI agent instructions copied into generated projects
 ├── licenses/                  # license text snippets, license notice snippets, included by LICENSE.jinja / COPYING*.jinja (not copied)
 ├── .editorconfig.jinja        # editor formatting rules for generated projects
