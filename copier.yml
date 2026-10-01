@@ -8,6 +8,7 @@ _exclude:
   - "~*"
   - "*.py[co]"
   - "__pycache__"
+  - "LICENSE"
   - "README.md"
   - "copier.yml"
   - "copier.yaml"
