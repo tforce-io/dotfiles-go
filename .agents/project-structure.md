@@ -12,20 +12,26 @@
 
 ## Layout
 
-.
+```
 ├── .agents/        # shared AI agent instructions (coding conventions, PR/task checklists, project structure)
 ├── .github/        # GitHub-specific config (workflows, issue/PR templates)
 ├── .vscode/        # VS Code editor/workspace settings
-├── build/          # CI/CD build automation scripts (cross-compilation, versioning, git metadata)
+├── api/            # OpenAPI/Swagger specs, JSON schemas, protocol definitions
+├── assets/         # repository assets (images, logos, etc)
 ├── cmd/            # main packages (one subdirectory per binary)
-├── common/         # shared code for whole project (types, helper methods)
-├── config/         # global application configuration and logging setup
-├── db/             # data models and database access
-├── diag/           # notifier, progress tracking for long-running operations
-├── engine/         # core application logic wiring CLI commands/controller to business logic
+├── common/         # shared types, helper methods for whole project (project-level stdlib)
+├── config/         # global application configuration
+├── deployments/    # deployment configs and templates (docker-compose, kubernetes/helm, terraform)
+├── docs/           # design and user documents (beyond godoc)
+├── examples/       # examples for applications and/or public libraries
+├── init/           # system init (systemd, upstart, sysv) and supervisor (runit, supervisord) configs
 ├── internal/       # private application/library code, not importable by other modules
 ├── pkg/            # public library code intended for external use (optional)
-├── tui/            # terminal UI components (Bubbletea-based interactive prompts/screens)
+├── scripts/        # build/install/analysis scripts (keeps root Makefile small)
+├── test/           # additional external test apps and test data
+├── tui/            # terminal UI components
+├── vendor/         # application dependencies (created by `go mod vendor`)
+├── web/            # web app components: static assets, server-side templates, SPAs
 ├── .editorconfig   # editor formatting rules
 ├── .gitignore      # git ignore patterns
 ├── AGENTS.md       # instructions for AI coding agents
@@ -36,6 +42,7 @@
 ├── go.mod          # Go module definition
 ├── go.sum          # Go module checksums
 ├── main.go         # default application entrypoint
+```
 
 <!-- Project-specific / Layout -->
 

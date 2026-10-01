@@ -86,4 +86,5 @@ License file mapping:
 
 ## Attributions
 
+- Portion of [project-structure.md](.agents/project-structure.md) referenced from [Standard Go Project Layout](https://github.com/golang-standards/project-layout) by [Golang Standards](https://github.com/golang-standards).
 - Portion of [task-guideline.md](.agents/task-guideline.md) adapted from [lazy senior dev mode](https://github.com/DietrichGebert/ponytail/blob/main/AGENTS.md) of [Ponytail](https://github.com/DietrichGebert/ponytail) by Dietrich Gebert, licensed under MIT license.
