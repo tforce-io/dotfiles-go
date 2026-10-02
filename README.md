@@ -51,10 +51,10 @@ To customize the dotfiles to follow your project, add your rules below the `<!--
 ├── .gitignore.jinja           # general Go ignore rules with Project-specific section for customization
 ├── AGENTS.md.jinja            # entry point for AI agents in generated projects
 ├── CLAUDE.md.jinja            # instructions specific for Claude coding agents
-├── LICENSE                    # MIT License Text for this template
-├── LICENSE.jinja              # renders LICENSE for LICENSE-based licenses (MIT, BSD-2-Clause, BSD-3-Clause, Apache-2.0)
-├── COPYING.jinja              # renders COPYING for GPL-3.0, GPL-3.0-or-later, AGPL-3.0, AGPL-3.0-or-later, and the GPL part of LGPL-3.0 / LGPL-3.0-or-later
-├── COPYING.LESSER.jinja       # renders COPYING.LESSER with the LGPL text (LGPL-3.0 and LGPL-3.0-or-later)
+├── LICENSE                    # MIT License Text for this template. Not output to downstream project.
+├── LICENSE.jinja              # renders LICENSE for LICENSE-based licenses (MIT, ISC, BSD-2-Clause, BSD-3-Clause, 0BSD, Apache-2.0, MPL-2.0)
+├── COPYING.jinja              # renders COPYING for GPL-3.0-only, GPL-3.0-or-later, the GPL part of LGPL-3.0-only / LGPL-3.0-or-later, AGPL-3.0-only, AGPL-3.0-or-later
+├── COPYING.LESSER.jinja       # renders COPYING.LESSER with the LGPL text (LGPL-3.0-only and LGPL-3.0-or-later)
 ├── .copier-answers.yml.jinja  # emits .copier-answers.yml (required by copier update)
 └── copier.yml                 # template questions and settings
 ```
@@ -65,14 +65,17 @@ License file mapping:
 |--------------------|------------------------------|
 | `None`             | none                         |
 | `MIT`              | `LICENSE`                    |
+| `ISC`              | `LICENSE`                    |
 | `BSD-2-Clause`     | `LICENSE`                    |
 | `BSD-3-Clause`     | `LICENSE`                    |
+| `0BSD`             | `LICENSE`                    |
 | `Apache-2.0`       | `LICENSE`                    |
-| `GPL-3.0`          | `COPYING`                    |
+| `MPL-2.0`          | `LICENSE`                    |
+| `GPL-3.0-only`     | `COPYING`                    |
 | `GPL-3.0-or-later` | `COPYING`                    |
-| `LGPL-3.0`         | `COPYING` + `COPYING.LESSER` |
+| `LGPL-3.0-only`    | `COPYING` + `COPYING.LESSER` |
 | `LGPL-3.0-or-later`| `COPYING` + `COPYING.LESSER` |
-| `AGPL-3.0`         | `COPYING`                    |
+| `AGPL-3.0-only`    | `COPYING`                    |
 | `AGPL-3.0-or-later`| `COPYING`                    |
 
 ## Maintain the template
@@ -87,16 +90,19 @@ License file mapping:
 
 ### Supported licenses
 
-- `AGPL-3.0`
+- `0BSD`
+- `AGPL-3.0-only`
 - `AGPL-3.0-or-later`
 - `Apache-2.0`
 - `BSD-2-Clause`
 - `BSD-3-Clause`
-- `GPL-3.0`
+- `GPL-3.0-only`
 - `GPL-3.0-or-later`
-- `LGPL-3.0`
+- `ISC`
+- `LGPL-3.0-only`
 - `LGPL-3.0-or-later`
 - `MIT`
+- `MPL-2.0`
 
 ## Attributions
 

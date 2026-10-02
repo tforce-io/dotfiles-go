@@ -6,7 +6,7 @@
 - The header comes first, before the `package` clause, followed by a blank line.
 
 {%- if license_header == 'Full' %}
-{%- set notice_license = license|lower|replace('-or-later','') %}
+{%- set notice_license = license|lower|replace('-or-later','')|replace('-only','') %}
 
 ## Full header
 

@@ -1,9 +1,15 @@
 {%- if license == 'MIT' -%}
 {% include 'licenses/mit.jinja' %}
+{%- elif license == 'ISC' -%}
+{% include 'licenses/isc.jinja' %}
 {%- elif license == 'BSD-2-Clause' -%}
 {% include 'licenses/bsd-2-clause.jinja' %}
 {%- elif license == 'BSD-3-Clause' -%}
 {% include 'licenses/bsd-3-clause.jinja' %}
+{%- elif license == '0BSD' -%}
+{% include 'licenses/0bsd.jinja' %}
 {%- elif license == 'Apache-2.0' -%}
 {% include 'licenses/apache-2.0.jinja' %}
+{%- elif license == 'MPL-2.0' -%}
+{% include 'licenses/mpl-2.0.jinja' %}
 {%- endif -%}
