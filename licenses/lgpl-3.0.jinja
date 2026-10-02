@@ -180,8 +180,10 @@ the "copyright" line and a pointer to where the full notice is found.
 
     This library is free software: you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation, version 3
-    of the License.
+    {% if license == 'LGPL-3.0-or-later' %}License as published by the Free Software Foundation, either
+    version 3 of the License, or (at your option) any later
+    version.{% else %}License as published by the Free Software Foundation, version 3
+    of the License.{% endif %}
 
     This library is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -196,9 +198,3 @@ Also add information on how to contact you by electronic and paper mail.
 
   You should also get your employer (if you work as a programmer) or school,
 if any, to sign a "copyright disclaimer" for the library, if necessary.
-
-  This version of the GNU Lesser General Public License incorporates the
-terms and conditions of version 3 of the GNU General Public License,
-reproduced below for reference.
-
-{% include 'licenses/gpl-3.0.jinja' %}

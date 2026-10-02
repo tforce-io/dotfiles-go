@@ -6,13 +6,14 @@
 - The header comes first, before the `package` clause, followed by a blank line.
 
 {%- if license_header == 'Full' %}
+{%- set notice_license = license|lower|replace('-or-later','') %}
 
 ## Full header
 
 The header for each code file is:
 
 ```go
-{% include 'licenses/' ~ license|lower ~ '-notice.jinja' -%}
+{% include 'licenses/' ~ notice_license ~ '-notice.jinja' -%}
 ```
 {%- elif license_header == 'SPDX' %}
 
