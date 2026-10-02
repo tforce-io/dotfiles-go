@@ -30,7 +30,8 @@ When adding/modifying code, try to follow these instructions:
 - For each package, follow the convention of existing files first.
 - If the package is new, or when adding new code, the preferred ordering in a file is: for each type, its declaration followed by its own methods (public before private), repeated per type in the file; then standalone functions (public before private) at the end.
 - When assigning values to object fields, try to follow the order of field declarations if possible.
-- Perform input validation at trust boundaries.
+- Perform input validation at trust boundaries. Boundaries are external APIs, databases, file systems, clocks, queues, UI events, network calls, subprocesses, generated code.
+- Don't modify arguments as side effects. Return values instead.
 - Allowlists preferred over denylists.
 - If moving files is needed, use the source control move command to retain history.
 - When renaming types, functions, remember to check relevant tests.
@@ -40,7 +41,7 @@ When adding/modifying code, try to follow these instructions:
 
 If you are fixing issues, instructions of `Sharing Code`, `Editing` apply, plus:
 
-- Fix the root cause, not the symptom.
+- Fix the root cause, not just the symptom.
 - Grep every caller of the function you touch to make sure we don't introduce a new bug or leave a bug half-fixed.
 <!-- Project-specific / Fixing -->
 

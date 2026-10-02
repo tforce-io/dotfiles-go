@@ -7,6 +7,7 @@
 {%- if license != 'None' and license_header != 'None' %}
 - Start every code file, including test files, with the license header defined in [license-header.md](license-header.md).
 {%- endif %}
+- Avoid magic numbers or strings, use a named constant or inline comment to explain its meaning or *why*.
 - Avoid unnecessary abstraction, don't introduce an interface until there are two or more real implementations.
 <!-- Project-specific / General -->
 
@@ -30,6 +31,7 @@
 - Document every exported identifier (types, functions, constants, vars) with a doc comment that starts with the identifier's name, per [Go doc conventions](https://go.dev/doc/comment).
 - Comments explain *why*, not *what* - the code already shows what it does.
 - Keep comments short and concise, up to date with the code; a stale comment is worse than no comment.
+- Keep comments about: non-obvious constraints, legal requirements, algorithmic tradeoffs, external system quirks, warnings of consequences, and TODOs with context and ownership.
 <!-- Project-specific / Comments -->
 
 ## Errors
