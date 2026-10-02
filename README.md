@@ -9,7 +9,7 @@ This `README.md` is for the template itself; it won't be copied into downstream 
 Generate a new project:
 
 ```sh
-copier copy gh:tforce-io/dotfiles-go path/to/destination --trust
+copier copy --trust gh:tforce-io/dotfiles-go .
 ```
 
 Update an existing project that was generated from this template:
@@ -26,7 +26,7 @@ copier update --trust
 
 ## Customize
 
-To customize the dotfiles to follow your project, add your rules below the `<!-- Project-specific -->` or `<!-- Project-specific / <Section> -->` marker of the section you are overriding. Project-specific rules are additive and will override the template rules above the marker if they conflict.
+To customize the dotfiles to follow your project, add your rules below the `<!-- Project-specific -->` or `<!-- Project-specific / <Section> -->` marker of the section you are overriding. Project-specific rules supplement the template rules; when they conflict, the project-specific rules take precedence.
 
 - Each section in a template-owned file ends with one `<!-- Project-specific -->` or `<!-- Project-specific / <Section> -->` marker, uniquely named after the section. In `.editorconfig` / `.gitignore` it is a plain `# Project-specific` comment. Everything above a marker is template-owned; everything below it is project-owned. For general additions, use the final `Project-specific` section's marker.
 - **DO NOT** add, edit, or delete anything above a marker, and never move or duplicate a marker.
@@ -51,6 +51,7 @@ To customize the dotfiles to follow your project, add your rules below the `<!--
 ├── .gitignore.jinja           # general Go ignore rules with Project-specific section for customization
 ├── AGENTS.md.jinja            # entry point for AI agents in generated projects
 ├── CLAUDE.md.jinja            # instructions specific for Claude coding agents
+├── LICENSE                    # MIT License Text for this template
 ├── LICENSE.jinja              # renders LICENSE for LICENSE-based licenses (MIT, BSD-2-Clause, BSD-3-Clause, Apache-2.0)
 ├── COPYING.jinja              # renders COPYING for GPL-3.0, GPL-3.0-or-later, AGPL-3.0, AGPL-3.0-or-later, and the GPL part of LGPL-3.0 / LGPL-3.0-or-later
 ├── COPYING.LESSER.jinja       # renders COPYING.LESSER with the LGPL text (LGPL-3.0 and LGPL-3.0-or-later)
@@ -76,19 +77,15 @@ License file mapping:
 
 ## Maintain the template
 
-`copier update` relies on a line-based diff/patch between old and new template versions, applied against the downstream project's current files. The `<!-- Project-specific -->` and `<!-- Project-specific / <Section> -->` markers are not a Copier feature - they only work as stable anchors if these rules are followed once a version has been tagged and released:
-
 - Keep the marker convention from the [Customize](#customize) section above in every new template file.
-- Never edit, reorder, or delete a line that has already been released above a `<!-- Project-specific -->`, `<!-- Project-specific / ... -->`, or `# Project-specific` marker. To release new template rules, append them to the end of the corresponding template section, still above its marker.
-- Never rename or reword a released marker - downstream users hang their content below it. If a section is split or renamed, keep the original marker text and place the new section (with its own new marker) around it.
+- Keep the marker text byte-identical across versions; Copier matches on this line as diff context, so even a whitespace or punctuation change can break the anchor and produce spurious conflicts.
+- Only make changes to content above the `<!-- Project-specific -->`, `<!-- Project-specific / ... -->`, or `# Project-specific` marker in each section.
 - Never rename or delete a shipped file without adding a `_migrations` entry in `copier.yml` (e.g. `git mv old new`) so downstream projects keep any content users appended past that file's marker instead of losing it.
-- Keep marker text byte-identical across versions - Copier matches on this line as diff context, so even a whitespace or punctuation change can break the anchor and produce spurious conflicts.
-- Tag every release that changes template-owned files, with an annotated, PEP 440-compliant tag (`git tag -a vX.Y.Z -m "..."` then `git push --tags`).
 - Never move or re-point a published tag (no force-push to tags); ship corrections as a new tag instead.
 
 ## Appendix
 
-### Supported licenses:
+### Supported licenses
 
 - `AGPL-3.0`
 - `AGPL-3.0-or-later`
@@ -104,4 +101,4 @@ License file mapping:
 ## Attributions
 
 - Portion of [project-structure.md](.agents/project-structure.md) referenced from [Standard Go Project Layout](https://github.com/golang-standards/project-layout) by [Golang Standards](https://github.com/golang-standards).
-- Portion of [task-guideline.md](.agents/task-guideline.md) adapted from [lazy senior dev mode](https://github.com/DietrichGebert/ponytail/blob/main/AGENTS.md) of [Ponytail](https://github.com/DietrichGebert/ponytail) by Dietrich Gebert, licensed under MIT license.
+- Portion of [task-guideline.md](.agents/task-guideline.md) referenced from [lazy senior dev mode](https://github.com/DietrichGebert/ponytail/blob/main/AGENTS.md) of [Ponytail](https://github.com/DietrichGebert/ponytail) by Dietrich Gebert, licensed under MIT license.
