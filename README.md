@@ -108,3 +108,4 @@ License file mapping:
 
 - Portion of [project-structure.md](.agents/project-structure.md) referenced from [Standard Go Project Layout](https://github.com/golang-standards/project-layout) by [Golang Standards](https://github.com/golang-standards).
 - Portion of [task-guideline.md](.agents/task-guideline.md) referenced from [lazy senior dev mode](https://github.com/DietrichGebert/ponytail/blob/main/AGENTS.md) of [Ponytail](https://github.com/DietrichGebert/ponytail) by Dietrich Gebert, licensed under MIT license.
+- Portions of [coding-conventions.md.jinja](.agents/coding-conventions.md.jinja) and [task-guideline.md](.agents/task-guideline.md) referenced from [clean-code-skills](https://github.com/btseee/clean-code-skills) by Battseren Badral, licensed under MIT license.
