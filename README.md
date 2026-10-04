@@ -1,6 +1,6 @@
-# dotfiles-go
+# TFattunic
 
-[Copier](https://copier.readthedocs.io/) template for multi-language projects. For the list of supported languages, see [Appendix](#supported-languages).
+[Copier](https://copier.readthedocs.io/) template attuned with multi-language support for any project. See [Appendix](#supported-languages) for details.
 
 This `README.md` is for the template itself; it won't be copied into downstream projects.
 
@@ -125,6 +125,7 @@ Shared/general sections live in the root templates; each root template `{% inclu
 
 ## Attributions
 
+- Initial structure and contents inspired by [LocalAI](https://github.com/mudler/LocalAI) by Ettore Di Giacinto (mudler), licensed under MIT license.
 - Portion of [project-structure.md](.agents/project-structure.md) referenced from [Standard Go Project Layout](https://github.com/golang-standards/project-layout) by [Golang Standards](https://github.com/golang-standards).
 - Portion of [task-guideline.md](.agents/task-guideline.md) referenced from [lazy senior dev mode](https://github.com/DietrichGebert/ponytail/blob/main/AGENTS.md) of [Ponytail](https://github.com/DietrichGebert/ponytail) by Dietrich Gebert, licensed under MIT license.
 - Portion of [coding-conventions.md.jinja](.agents/coding-conventions.md.jinja) and [task-guideline.md](.agents/task-guideline.md) referenced from [clean-code-skills](https://github.com/btseee/clean-code-skills) by Battseren Badral, licensed under MIT license.
