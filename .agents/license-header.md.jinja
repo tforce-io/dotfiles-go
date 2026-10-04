@@ -3,7 +3,11 @@
 ## Guideline
 
 - Start every code file, including test files, with the license header below.
+{%- if language == 'go' %}
 - The header comes first, before the `package` clause, followed by a blank line.
+{%- else %}
+- The header comes first at the top of the code file, followed by a blank line.
+{%- endif %}
 
 {%- if license_header == 'Full' %}
 {%- set notice_license = license|lower|replace('-or-later','')|replace('-only','') %}
@@ -12,7 +16,7 @@
 
 The header for each code file is:
 
-```go
+```
 {% include 'licenses/' ~ notice_license ~ '-notice.jinja' -%}
 ```
 {%- elif license_header == 'SPDX' %}
@@ -21,7 +25,7 @@ The header for each code file is:
 
 The header for each code file is:
 
-```go
+```
 {% include 'licenses/spdx-notice.jinja' -%}
 ```
 {%- endif %}

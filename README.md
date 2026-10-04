@@ -1,6 +1,6 @@
 # dotfiles-go
 
-[Copier](https://copier.readthedocs.io/) template for Go projects.
+[Copier](https://copier.readthedocs.io/) template for multi-language projects. For the list of supported languages, see [Appendix](#supported-languages).
 
 This `README.md` is for the template itself; it won't be copied into downstream projects.
 
@@ -37,9 +37,10 @@ To customize the dotfiles to follow your project, add your rules below the `<!--
 | Question            | Description                                               |
 |---------------------|-----------------------------------------------------------|
 | `project_name`      | Name of the generated project                             |
+| `language`          | Primary language of the project                           |
 | `license`           | Open source license (see [Appendix](#supported-licenses)) or `None` |
 | `copyright_holder`  | Copyright holder name                                     |
-| `copyright_year`    | Copyright year (defaults to 2025)                         |
+| `copyright_year`    | Copyright year                                            |
 | `license_header`    | License header style for code files: `Full`, `SPDX`, or `None` (skipped if `license` is `None`) |
 
 ## Template Layout
@@ -47,11 +48,12 @@ To customize the dotfiles to follow your project, add your rules below the `<!--
 ```
 ├── .agents/                   # shared AI agent instructions copied into generated projects
 ├── licenses/                  # license text snippets, license notice snippets, included by LICENSE.jinja / COPYING*.jinja (not copied)
-├── .editorconfig.jinja        # editor formatting rules for generated projects
-├── .gitignore.jinja           # general Go ignore rules with Project-specific section for customization
+├── languages/<lang>/          # language-specific content, included by the root templates above, one folder per supported language (not copied)
+├── .editorconfig.jinja        # generic editor formatting rules + language fragment included before the Project-specific marker
+├── .gitignore.jinja           # generic ignore rules + language fragment included before the Project-specific marker
 ├── AGENTS.md.jinja            # entry point for AI agents in generated projects
 ├── CLAUDE.md.jinja            # instructions specific for Claude coding agents
-├── LICENSE                    # MIT License Text for this template. Not output to downstream project.
+├── LICENSE                    # MIT License Text for this template (not copied)
 ├── LICENSE.jinja              # renders LICENSE for LICENSE-based licenses (MIT, ISC, BSD-2-Clause, BSD-3-Clause, 0BSD, Apache-2.0, MPL-2.0)
 ├── COPYING.jinja              # renders COPYING for GPL-3.0-only, GPL-3.0-or-later, the GPL part of LGPL-3.0-only / LGPL-3.0-or-later, AGPL-3.0-only, AGPL-3.0-or-later
 ├── COPYING.LESSER.jinja       # renders COPYING.LESSER with the LGPL text (LGPL-3.0-only and LGPL-3.0-or-later)
@@ -59,7 +61,19 @@ To customize the dotfiles to follow your project, add your rules below the `<!--
 └── copier.yml                 # template questions and settings
 ```
 
-License file mapping:
+### Language fragments (`languages/<lang>/`)
+
+| Fragment                     | Included by                              |
+|------------------------------|------------------------------------------|
+| `.editorconfig.jinja`        | `.editorconfig.jinja`                    |
+| `.gitignore.jinja`           | `.gitignore.jinja`                       |
+| `coding-conventions.md.jinja`| `.agents/coding-conventions.md.jinja`    |
+| `commands.md.jinja`          | `.agents/commands.md.jinja`              |
+| `project-structure.md.jinja` | `.agents/project-structure.md.jinja`     |
+
+Shared/general sections live in the root templates; each root template `{% include %}`s the language fragment of the selected `language` answer. These fragments are never emitted as project files.
+
+### License file mapping
 
 | License choice     | Files generated              |
 |--------------------|------------------------------|
@@ -80,13 +94,18 @@ License file mapping:
 
 ## Maintain the template
 
-- Keep the marker convention from the [Customize](#customize) section above in every new template file.
+- Keep the marker convention from the [Customize](#customize) section above in every new template file, including the language fragments in `languages/<lang>/`.
 - Keep the marker text byte-identical across versions; Copier matches on this line as diff context, so even a whitespace or punctuation change can break the anchor and produce spurious conflicts.
 - Only make changes to content above the `<!-- Project-specific -->`, `<!-- Project-specific / ... -->`, or `# Project-specific` marker in each section.
+- To add a new language, create `languages/<lang_code>/` with the five fragments listed above and add `<lang_code>` to the `language` question's choices in `copier.yml`.
 - Never rename or delete a shipped file without adding a `_migrations` entry in `copier.yml` (e.g. `git mv old new`) so downstream projects keep any content users appended past that file's marker instead of losing it.
 - Never move or re-point a published tag (no force-push to tags); ship corrections as a new tag instead.
 
 ## Appendix
+
+### Supported languages
+
+- Go: `go`
 
 ### Supported licenses
 
@@ -108,4 +127,4 @@ License file mapping:
 
 - Portion of [project-structure.md](.agents/project-structure.md) referenced from [Standard Go Project Layout](https://github.com/golang-standards/project-layout) by [Golang Standards](https://github.com/golang-standards).
 - Portion of [task-guideline.md](.agents/task-guideline.md) referenced from [lazy senior dev mode](https://github.com/DietrichGebert/ponytail/blob/main/AGENTS.md) of [Ponytail](https://github.com/DietrichGebert/ponytail) by Dietrich Gebert, licensed under MIT license.
-- Portions of [coding-conventions.md.jinja](.agents/coding-conventions.md.jinja) and [task-guideline.md](.agents/task-guideline.md) referenced from [clean-code-skills](https://github.com/btseee/clean-code-skills) by Battseren Badral, licensed under MIT license.
+- Portion of [coding-conventions.md.jinja](.agents/coding-conventions.md.jinja) and [task-guideline.md](.agents/task-guideline.md) referenced from [clean-code-skills](https://github.com/btseee/clean-code-skills) by Battseren Badral, licensed under MIT license.
